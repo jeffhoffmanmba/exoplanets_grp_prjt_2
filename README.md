@@ -1,4 +1,4 @@
-# exoplanets_grp_prjt_2
+# Potentially Inhabitable Exoplanets - Group Project Team 5
 
 Potentially Inhabitable Exo-planets    (group 5)
     For hundreds of millions of years creatures have roamed this planet looking at
