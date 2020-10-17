@@ -31,3 +31,5 @@ We will be providing some (hopefully) spectacular graphs depicting information
 about exoplanets that may be capable of hosting life, including their size, density,
 temperature, composition, solar system data, galactic locations and distance from
 earth.
+
+![alt test](https://github.com/jeffhoffmanmba/inhabitable_exoplanets_grp_prjt_2/blob/main/images/download.png)
