@@ -1,1 +1,0 @@
-eng = "postgresql://postgres:hy046790hy@localhost:5432/planetary"
