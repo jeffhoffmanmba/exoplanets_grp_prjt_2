@@ -1,7 +1,10 @@
 # Potentially Inhabitable Exoplanets
 
-“If we can identify another Earth-like planet, it comes full circle, from thinking that everything revolves around our planet to knowing that there are lots of other Earths out there.”
+“If we can identify another Earth-like planet, it comes full circle, from thinking that
+everything revolves around our planet to knowing that there are lots of other Earths out there.”
 - Sara Seager, professor of planetary science and physics at MIT
+
+![alt test](https://github.com/jeffhoffmanmba/inhabitable_exoplanets_grp_prjt_2/blob/main/images/nasa_habitable_zone.jpg)
 
 Potentially Inhabitable Exo-planets    (group 5)
     For hundreds of millions of years creatures have roamed this planet looking at
