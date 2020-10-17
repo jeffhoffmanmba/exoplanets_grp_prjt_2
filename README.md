@@ -1,5 +1,8 @@
 # Potentially Inhabitable Exoplanets - Group Project Team 5
 
+“If we can identify another Earth-like planet, it comes full circle, from thinking that everything revolves around our planet to knowing that there are lots of other Earths out there.”
+- Sara Seager, professor of planetary science and physics at MIT
+
 Potentially Inhabitable Exo-planets    (group 5)
     For hundreds of millions of years creatures have roamed this planet looking at
 the night sky, at the distant points of light.  It is most likely that until very recently
