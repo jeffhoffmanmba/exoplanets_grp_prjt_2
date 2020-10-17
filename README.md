@@ -1,4 +1,4 @@
-# Potentially Inhabitable Exoplanets - Group Project Team 5
+# Potentially Inhabitable Exoplanets
 
 “If we can identify another Earth-like planet, it comes full circle, from thinking that everything revolves around our planet to knowing that there are lots of other Earths out there.”
 - Sara Seager, professor of planetary science and physics at MIT
