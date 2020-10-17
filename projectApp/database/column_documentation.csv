@@ -1,0 +1,36 @@
+column_name,short_desc,long_desc
+pl_name,Planet Name,Planet name most commonly used in the literature.
+host_star,Host Name,Stellar name most commonly used in the literature.
+pl_ltr,Planet Letter,Letter assigned to the planetary component of a planetary system.
+sys_stars,Number of Stars,
+sys_planets,Number of known Planets in system,Number of planets in the planetary system.
+sys_moons,Number of known Moons in system,Number of moons detected in the planetary system.
+disc_method,Discovery Method,Method by which the planet was first identified.
+disc_year,Discovery Year,Year the planet was discovered.
+disc_location,Discovery Locale,
+disc_facility,Discovery Facility,
+orb_period,Orbital Period [days],Time the planet takes to make a complete orbit around the host star or system.
+pl_radius_e,Planet Radius [Earth Radius],"Length of a line segment from the center of the planet to its surface, measured in units of radius of the Earth."
+pl_mass_e,Planet Mass or Mass*sin(i) [Earth Mass],
+pl_density,Planet Density [g/cm**3],Amount of mass per unit of volume of the planet.
+pl_insol,Insolation Flux [Earth Flux],Insolation flux is another way to give the equilibrium temperature. It's given in units relative to those measured for the Earth from the Sun.
+pl_temp_k,Equilibrium Temperature [K],Temperature of the planet as modeled by a black body heated only by its host star.
+st_type,spectral type,
+st_temp_k,Stellar Effective Temperature [K],Temperature of the star as modeled by a black body emitting the same total amount of electromagnetic radiation.
+st_radius_s,Stellar Radius [Solar Radius],"Length of a line segment from the center of the star to its surface, measured in units of radius of the Sun."
+st_mass_s,Stellar Mass [Solar mass],"Amount of matter contained in the star, measured in units of masses of the Sun."
+st_bright,Stellar Luminosity [log(Solar)],"Amount of energy emitted by a star per unit time, measured in units of solar luminosities."
+st_gravity,Stellar Surface Gravity [log10(cm/s**2)],Gravitational acceleration experienced at the stellar surface.
+st_age,Stellar Age [Gyr],
+st_density,Stellar Density [g/cm**3],Amount of mass per unit of volume of the star.
+ga_lat,Galactic Latitude [deg],Galactic latitude of the planetary system in units of decimal degrees.
+ga_long,Galactic Longitude [deg],Galactic longitude of the planetary system in units of decimal degrees.
+distance,Distance [pc],Distance to the planetary system in units of parsecs.
+circumference_k,Circumference in km,Circumference expressed in kilometers.
+circumference _m,Circumference in m,Circumference expressed in miles.
+density_e,relative density,Density relative to earth's.
+latitude,Latitude,Geo coordinate
+location,Geo Location,"Generally given as a city, country but may appear as a country, zipcode."
+longitude,Longitude,Geo coordinate
+temp_c,Temperature as c,celsius temperature. Converted from kelvin as integer
+temp _f,Temperature as f,fahrenheit temperature. Converted from kelvin as integer
