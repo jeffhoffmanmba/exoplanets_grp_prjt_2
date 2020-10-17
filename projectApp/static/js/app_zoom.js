@@ -1,6 +1,6 @@
 
 var my_data = data;
-console.log(my_data);
+
 // Set axes margin
 const adj = 1.1;
 
@@ -31,10 +31,9 @@ function init(){
                 .attr("viewBox", `0 0 ${svgWidth} ${svgHeight}`)
                 // CSS for responsive design
                 .classed("svg-content-responsive", true);
+    
 
-    // Set chart area
-    var chartGroup = svg.append("g")
-                        .attr("transform", `translate(${margin.left}, ${margin.top})`);
+                        
 
     // Change data types to be able to calculate
     my_data["stars"].forEach(d => {
@@ -81,14 +80,42 @@ function init(){
                          .domain([lon[0]*adj, lon[1]*adj])
                          .range([height, 0]);
 
-    var xAxis = chartGroup.append("g")
-                          .attr("transform", `translate(0, ${height})`)
+    var xAxis = svg.append("g")
+                          .attr("transform", `translate(${margin.left}, ${height+margin.top})`)
                           .call(d3.axisBottom(xLinearScale));
     
-    var yAxis = chartGroup.append("g")
-                          //.attr("transform", `translate(${width/2}, 0)`)
+    var yAxis = svg.append("g")
+                          .attr("transform", `translate(${margin.left}, ${margin.top})`)
                           .call(d3.axisLeft(yLinearScale));
     
+    // Add a clipPath: everything out of this area won't be drawn.
+    var clip = svg.append("defs").append("svg:clipPath")
+                                 .attr("id", "clip")
+                                 .append("svg:rect")
+                                 .attr("width", width )
+                                 .attr("height", height )
+                                 .attr("x", 0)
+                                 .attr("y", 0);
+
+    // Set chart area
+    var chartGroup = svg.append("g")
+                        .attr("clip-path", "url(#clip)")
+                        .attr("transform", `translate(${margin.left}, ${margin.top})`);
+
+    // Set the zoom and Pan features: how much you can zoom, on which part, and what to do when there is a zoom
+    var zoom = d3.zoom()
+                 .scaleExtent([.5, 20])  // This control how much you can unzoom (x0.5) and zoom (x20)
+                 .extent([[0, 0], [width, height]])
+                 .on("zoom", updateChart);
+
+    svg.append("rect")
+       .attr("width", width)
+       .attr("height", height)
+       .style("fill", "none")
+       .style("pointer-events", "all")
+       .attr('transform', `translate(${margin.left},${margin.top}`)
+       .call(zoom);
+
     // Render stars
     var starGroup = chartGroup.append("g")
                               .selectAll("circle")
@@ -101,8 +128,24 @@ function init(){
                               .classed("stateCircle", true);
     
     // Set listeners for showing and hiding tooltips
-    starGroup.on("mouseover", toolTip.show)
-             .on("mouseout", toolTip.hide);    
+    chartGroup.selectAll("circle")
+              .on("mouseover", toolTip.show)
+              .on("mouseout", toolTip.hide);
+
+    function updateChart() {
+        // recover the new scale
+        var newX = d3.event.transform.rescaleX(xLinearScale);
+        var newY = d3.event.transform.rescaleY(yLinearScale);
+
+        // update axes with these new boundaries
+        xAxis.call(d3.axisBottom(newX));
+        yAxis.call(d3.axisLeft(newY));
+
+        // update circle position
+        chartGroup.selectAll("circle")
+                  .attr('cx', function(d) {return newX(d.gal_lat)})
+                  .attr('cy', function(d) {return newY(d.gal_long)});
+    }
 }
 
 init();
