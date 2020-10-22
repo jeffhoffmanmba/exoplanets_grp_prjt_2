@@ -77,7 +77,7 @@ function updateToolTip(chosenXAxis, circlesGroup) {
     label = "Estimated Radius of Planet:";
   }
   else {
-    label = "Planet Mass Est:";
+    label = "Planet Mass-Radius relation est:";
   }
   var toolTip = d3.tip()
     .attr("class", "tooltip")
@@ -106,7 +106,7 @@ d3.csv("phl_opt_hab_exoplanet_catalog.csv").then(function(habitableZone, err) {
   // parse data
   habitableZone.forEach(function(data) {
     data.PlanetRadiusEst = +data.PlanetRadiusEst;
-    data.StarRadius = +data.StarRadius;
+    data.StarDistance = +data.StarDistance;
     data.PlanetMassEst = +data.PlanetMassEst;
   });
 
@@ -115,7 +115,7 @@ d3.csv("phl_opt_hab_exoplanet_catalog.csv").then(function(habitableZone, err) {
 
     // Create y scale function
     var yLinearScale = d3.scaleLinear()
-      .domain([0, d3.max(habitableZone, d => d.StarRadius)])
+      .domain([0, d3.max(habitableZone, d => d.StarDistance)])
       .range([height, 0]);
   
     // Create initial axis functions
@@ -138,7 +138,7 @@ d3.csv("phl_opt_hab_exoplanet_catalog.csv").then(function(habitableZone, err) {
       .enter()
       .append("circle")
       .attr("cx", d => xLinearScale(d[chosenXAxis]))
-      .attr("cy", d => yLinearScale(d.StarRadius))
+      .attr("cy", d => yLinearScale(d.StarDistance))
       .attr("r", 20)
       .attr("fill", "red")
       .attr("opacity", ".5");
@@ -168,7 +168,7 @@ d3.csv("phl_opt_hab_exoplanet_catalog.csv").then(function(habitableZone, err) {
       .attr("x", 0 - (height / 2))
       .attr("dy", "1em")
       .classed("axis-text", true)
-      .text("Planets Star Radius");
+      .text("Planets Star Distance (parsecs)");
   
     // updateToolTip function above csv import
     var circlesGroup = updateToolTip(chosenXAxis, circlesGroup);
