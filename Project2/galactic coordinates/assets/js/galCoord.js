@@ -37,6 +37,10 @@ const chartGroup2 = svg.append("g")
 var chosenXAxis = "gal_long";
 var chosenYAxis = "gal_lat";
 
+var showStars = true;
+var showPotHabit1 = true;
+var showPotHabit2 = true;
+
 //////////////////////////////////////////////////////////////////////////////////
 //01      Scale functions                                                       //
 //   a- xScale: set the xLinearScale var used for bottomAxis and                //
@@ -96,24 +100,6 @@ function renderYAxis(newYScale, yAxis) {
     .call(leftAxis);
   return yAxis;
 }
-//gridcomment
-// //c
-// function renderXGrid(newXScale, xGrid) {
-//   var xGridlines = d3.axisTop(newXScale);
-//   xGrid.transition()
-//     .duration(1000)
-//     .call(xGridlines);
-//   return xGrid;
-// }
-// //d
-// function renderYGrid(newYScale, yGrid) {
-//   var yGridlines = d3.axisLeft(newYScale);
-//   yGrid.transition()
-//     .duration(1000)
-//     .call(yGridlines);
-//   return yGrid;
-// }
-
 //e
 function renderCirclesXAxis(circlesGroup, newXScale, chosenXAxis) {
   circlesGroup.transition()
@@ -181,17 +167,10 @@ d3.csv("./assets/data/stars.csv").then(function(dataIn, err) {
 
   if (err) throw err;
 
-console.log (dataIn)
-
   dataIn.forEach(function(data) {
     data.gal_lat = +data.gal_lat;
     data.gal_long = +data.gal_long;
 
-    // data.age = +data.age;
-    // data.income = +data.income;
-  //   data.healthcare = +data.healthcare;
-  //   data.obesity = +data.obesity;
-  //   data.smokes = +data.smokes;
   });
 
   //b
@@ -199,25 +178,13 @@ console.log (dataIn)
   var yLinearScale = yScale(dataIn, chosenYAxis);
   var bottomAxis = d3.axisBottom(xLinearScale);
   var leftAxis = d3.axisLeft(yLinearScale);
-  //gridcomment
-  // var xGridlines = d3.axisTop(xLinearScale).tickFormat("").tickSize(-height).scale(xLinearScale);
-  // var yGridlines = d3.axisLeft(yLinearScale).tickFormat("").tickSize(-width).scale(yLinearScale);
-
+  
   var xAxis = chartGroup.append("g").classed("x-axis", true)
     .attr("transform", `translate(0, ${height})`)
     .call(bottomAxis);
 
   var yAxis = chartGroup.append("g").classed("y-axis", true)
     .call(leftAxis);
-
-  //gridcomment
-  // var xGrid = chartGroup.append("g").attr("class", "grid")
-  //   .attr("opacity", ".4").attr("color", "green")
-  //   .call(xGridlines);
-
-  // var yGrid = chartGroup.append("g").attr("class", "grid")
-  //   .attr("opacity", ".4").attr("color", "green")
-  //   .call(yGridlines);
  
   var circlesGroup = chartGroup.selectAll("circle")
     .data(dataIn).enter().append("circle").attr("r", 2)
@@ -262,149 +229,103 @@ console.log(dataIn2)
       .attr("fill", "red").attr("opacity", ".8");
  });
 
- // ////////////////////////////////////////////////////
-  // //10.1     x-axis labels                          //
-  // //   - create group tag for x axis labels.        //
-  // //   - append text for each x axis user option.   //
-  // ////////////////////////////////////////////////////
-  // var labelsGroupX = chartGroup.append("g").attr("x", 0)
-  //   .attr("transform", `translate(${width / 2}, ${height + 20})`);
+ ////////////////////////////////////////////////////
+  //10.1     x-axis labels                          //
+  //   - create group tag for x axis labels.        //
+  //   - append text for each x axis user option.   //
+  ////////////////////////////////////////////////////
+  var labelsGroupPot1 = chartGroup.append("g").attr("x", 20)
+    .attr("transform", `translate(${width / 2}, ${height + 20})`)
+    .classed("active", true)
+    .text("Show Exoplanets Most likely to be Habitable");
 
-  // var ageLabel = labelsGroupX.append("text")
-  //   .attr("y", 20)
-  //   .attr("value", "age") // value to grab for event listener
-  //   .classed("active", true)
-  //   .text("Age (Median)");
+  var labelsGroupPot2 = chartGroup.append("g").attr("x", 40)
+  .attr("transform", `translate(${width / 2}, ${height + 20})`)
+  .classed("active", true)
+  .text("Show Exoplanets Less likely to be Habitable");
 
-  // var povertyLabel = labelsGroupX.append("text")
-  //   .attr("y", 40)
-  //   .attr("value", "poverty") // value to grab for event listener
-  //   .classed("inactive", true)
-  //   .text("In Poverty (%)");
 
-  // var incomeLabel = labelsGroupX.append("text")
-  //   .attr("y", 60)
-  //   .attr("value", "income") // value to grab for event listener
-  //   .classed("inactive", true)
-  //   .text("Household Income (Median)");
+   ////////////////////////////////////////////////////
+  //10.2     y-axis labels                          //
+  //   - create group tag for y axis labels.        //
+  //   - append text for each y axis user option.   //
+  ////////////////////////////////////////////////////
+  var labelsGroupY = chartGroup.append("g").attr("x",  (height / 2))
+    .attr("transform", `translate(0, ${height / 2})`);
+    .attr("y", -margin.left)
+    .classed("active", true)
+    .attr("dy", "1em")
+    .attr("transform", "rotate(-90)")
+    .text("Show Stars with Discovered Exoplanets");
 
-  // ////////////////////////////////////////////////////
-  // //10.2     y-axis labels                          //
-  // //   - create group tag for y axis labels.        //
-  // //   - append text for each y axis user option.   //
-  // ////////////////////////////////////////////////////
-  // var labelsGroupY = chartGroup.append("g").attr("x",  (height / 2))
-  //   .attr("transform", `translate(0, ${height / 2})`);
+  ////////////////////////////////////////////////////////////////////
+  //10.3     x-axis label event listener                            //
+  //   a- get value of selection, process if not new value.         //
+  //   b- change axis mapping variables, transition their change.   //
+  //   c- highlight chosen x axis label.                            //
+  ////////////////////////////////////////////////////////////////////
+  labelsGroupX.selectAll("text")
+    .on("click", function() {
+      //a
+      var value = d3.select(this).attr("value");
 
-  // var smokesLabel = labelsGroupY.append("text")
-  //   .attr("y", -margin.left)
-  //   .classed("inactive", true)
-  //   .attr("dy", "1em")
-  //   .attr("value", "smokes") // value to grab for event listener
-  //   .attr("transform", "rotate(-90)")
-  //   .text("Smokes (%)");
-
-  // var obesityLabel = labelsGroupY.append("text")
-  //   .attr("y", 20 - margin.left)
-  //   .classed("inactive", true)
-  //   .attr("dy", "1em")
-  //   .attr("value", "obesity") // value to grab for event listener
-  //   .attr("transform", "rotate(-90)")
-  //   .text("Obesity (%)");
-
-  // var healthcareLabel = labelsGroupY.append("text")
-  //   .attr("y", 40 - margin.left)
-  //   .classed("active", true)
-  //   .attr("dy", "1em")
-  //   .attr("value", "healthcare") // value to grab for event listener
-  //   .attr("transform", "rotate(-90)")
-  //   .text("Lacks Healthcare (%)");
-
-  // ////////////////////////////////////////////////////////////////////
-  // //10.3     x-axis label event listener                            //
-  // //   a- get value of selection, process if not new value.         //
-  // //   b- change axis mapping variables, transition their change.   //
-  // //   c- highlight chosen x axis label.                            //
-  // ////////////////////////////////////////////////////////////////////
-  // labelsGroupX.selectAll("text")
-  //   .on("click", function() {
-  //     //a
-  //     var value = d3.select(this).attr("value");
-
-  //     if (value !== chosenXAxis) {
-  //       //b 
-  //       chosenXAxis = value;
-  //       xLinearScale = xScale(dataIn, chosenXAxis);
-  //       xAxis = renderXAxis(xLinearScale, xAxis);
-  //       //gridcomment
-  //       // xGrid = renderXGrid(xLinearScale, xGrid);
-  //       circlesGroup = renderCirclesXAxis(circlesGroup, xLinearScale, chosenXAxis);
-  //       textGroup = renderTextXAxis(textGroup, xLinearScale, chosenXAxis);
-  //       circlesGroup = updateToolTip(chosenXAxis, chosenYAxis, circlesGroup);
-
-  //       //c 
-  //       switch (chosenXAxis) {
-  //         case "poverty":
-  //           povertyLabel.classed("active", true).classed("inactive", false);
-  //           ageLabel.classed("active", false).classed("inactive", true);
-  //           incomeLabel.classed("active", false).classed("inactive", true);
-  //           break;
-  //         case "age":
-  //           povertyLabel.classed("active", false).classed("inactive", true);
-  //           ageLabel.classed("active", true).classed("inactive", false);
-  //           incomeLabel.classed("active", false).classed("inactive", true);
-  //           break; 
-  //         case "income":
-  //           povertyLabel.classed("active", false).classed("inactive", true);
-  //           ageLabel.classed("active", false).classed("inactive", true);
-  //           incomeLabel.classed("active", true).classed("inactive", false);
-  //           break;       
+      if (showPotHabit1 === true) {
+        //b 
+        showStars = false;
+        starsLabel.classed("active", false).classed("inactive", true);
+      }
+      else {
+        showStars = true;
+        starsLabel.classed("active", true).classed("inactive", false);
+      }
+      renderChart;
+        //c 
+        switch (chosenXAxis) {
+          case "poverty":
+            povertyLabel.classed("active", true).classed("inactive", false);
+            ageLabel.classed("active", false).classed("inactive", true);
+            incomeLabel.classed("active", false).classed("inactive", true);
+            break;
+          case "age":
+            povertyLabel.classed("active", false).classed("inactive", true);
+            ageLabel.classed("active", true).classed("inactive", false);
+            incomeLabel.classed("active", false).classed("inactive", true);
+            break; 
+          case "income":
+            povertyLabel.classed("active", false).classed("inactive", true);
+            ageLabel.classed("active", false).classed("inactive", true);
+            incomeLabel.classed("active", true).classed("inactive", false);
+            break;       
   //       }
   //     }
   //   });
-  // ////////////////////////////////////////////////////////////////////
-  // //10.4     y-axis label event listener                            //
-  // //   a- get value of selection, process if not new value.         //
-  // //   b- change axis mapping variables, transition their change.   //
-  // //   c- highlight chosen y axis label.                            //
-  // ////////////////////////////////////////////////////////////////////
-  // labelsGroupY.selectAll("text")
-  //   .on("click", function() {
-  //     //a
-  //     var value = d3.select(this).attr("value");
+  ////////////////////////////////////////////////////////////////////
+  //10.4     y-axis label event listener                            //
+  //   a- determine if user is turning on or off displaying of stars.   //
+  //   b- call fnuction to re-render graph.
+  ////////////////////////////////////////////////////////////////////
+  labelsGroupY.selectAll("text")
+    .on("click", function() {
+      //a
+      var value = d3.select(this).attr("value");
 
-  //     if (value !== chosenYAxis) {
-  //       //b 
-  //       chosenYAxis = value;
-  //       yLinearScale = yScale(dataIn, chosenYAxis);
-  //       yAxis = renderYAxis(yLinearScale, yAxis);
-  //       //gridcomment
-  //       // yGrid = renderYGrid(yLinearScale, yGrid);
-  //       circlesGroup = renderCirclesYAxis(circlesGroup, yLinearScale, chosenYAxis);
-  //       textGroup = renderTextYAxis(textGroup, yLinearScale, chosenYAxis);
-  //       circlesGroup = updateToolTip(chosenXAxis, chosenYAxis, circlesGroup);
-
-  //       //c 
-  //       switch (chosenYAxis) {
-  //         case "obesity":
-  //           obesityLabel.classed("active", true).classed("inactive", false);
-  //           smokesLabel.classed("active", false).classed("inactive", true);
-  //           healthcareLabel.classed("active", false).classed("inactive", true);
-  //           break;
-  //         case "smokes":
-  //           obesityLabel.classed("active", false).classed("inactive", true);
-  //           smokesLabel.classed("active", true).classed("inactive", false);
-  //           healthcareLabel.classed("active", false).classed("inactive", true);
-  //           break; 
-  //         case "healthcare":
-  //           obesityLabel.classed("active", false).classed("inactive", true);
-  //           smokesLabel.classed("active", false).classed("inactive", true);
-  //           healthcareLabel.classed("active", true).classed("inactive", false);
-  //           break;       
-  //       }
-  //     }
+      if (showStars === true) {
+        //b 
+        showStars = false;
+        starsLabel.classed("active", false).classed("inactive", true);
+      }
+      else {
+        showStars = true;
+        starsLabel.classed("active", true).classed("inactive", false);
+      }
+      renderChart;
+    }
   //   });
 
 }).catch(function(error) {
   console.log(error);
 });
+
+circlesGroup = renderCirclesYAxis(circlesGroup, yLinearScale, chosenYAxis);
+        // textGroup = renderTextYAxis(textGroup, yLinearScale, chosenYAxis);
+        // circlesGroup = updateToolTip(chosenXAxis, chosenYAxis, circlesGroup);
