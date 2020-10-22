@@ -149,7 +149,7 @@ function renderTextYAxis(textGroup, newYScale, chosenYAxis) {
 //   c- apply toolTip and mouseover/out actions to circlesGroup.     //
 ///////////////////////////////////////////////////////////////////////
 
-function updateToolTip(chosenXAxis, chosenYAxis, circlesGroup) {
+function updateToolTip(chosenXAxis, chosenYAxis, circlesGroup) { console.log("tip")
   
   //b
   var toolTip = d3.tip().attr("class", "tooltip").offset([5, -75])
@@ -177,7 +177,7 @@ function updateToolTip(chosenXAxis, chosenYAxis, circlesGroup) {
 
 //a
 // d3.csv("assets/data/new.csv").then(function(dataIn, err) {
-d3.csv("assets/data/stars.csv").then(function(dataIn, err) {
+d3.csv("./assets/data/stars.csv").then(function(dataIn, err) {
 
   if (err) throw err;
 
@@ -233,6 +233,7 @@ console.log (dataIn)
 
   //c  
   circlesGroup = updateToolTip(chosenXAxis, chosenYAxis, circlesGroup);
+  console.log("did criclegroup")
 
   d3.csv("assets/data/new.csv").then(function(dataIn2, err) {
 console.log(dataIn2)
