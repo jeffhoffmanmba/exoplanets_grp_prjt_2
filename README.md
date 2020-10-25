@@ -1,4 +1,6 @@
-# Project 2 VisualizeMeCaptain - Potentially Inhabitable Exoplanets!
+# Group Project - VisualizeMeCaptain - Potentially Inhabitable Exoplanets!
+
+## Background
 
 For hundreds of millions of years creatures have roamed our planet looking at
 the night sky, at the distant points of light. At some point, somewhere, other life must have
@@ -7,11 +9,9 @@ evolved, but as of now we have found no such evidence.
 There are currently over 4000 known planets in the visible universe, each
 existing for billions of years. 
 
-“If we can identify another Earth-like planet, it comes full circle, from thinking that
-everything revolves around our planet to knowing that there are lots of other Earths out there.”
-- Sara Seager, professor of planetary science and physics at MIT
+![alt test](https://github.com/jeffhoffmanmba/inhabitable_exoplanets_grp_prjt_2/blob/main/images/nasa_habitable_zone.jpg)
 
-##There are 4000+ known planets
+## What's Known about the 4000+ planets discovered?
 
 NASA and astronmers have collected information on the size and density of these 4000+ known planets, 
 how far from their host star(s) they orbit, and how much energy their star(s) emit.  From this
@@ -24,8 +24,6 @@ stars--where it's not too hot and not too cold for liquid water to exist on the 
 temperature between 0 and 100 degrees centigrade has
 the possibility of having liquid water and therefor the possibility of life.  Such
 planets exist in a “habitable zone” (aka “goldilocks zone”).
-
-![alt test](https://github.com/jeffhoffmanmba/inhabitable_exoplanets_grp_prjt_2/blob/main/images/nasa_habitable_zone.jpg)
 
 ## Your Task
 
@@ -57,4 +55,7 @@ ecosystem, where such a place might exist, and are there other life forms there?
 * Joonil Kim github.com/hydralisk1
 * Melissa Torres github.com/mtorres0388
 
-![alt test](https://github.com/jeffhoffmanmba/inhabitable_exoplanets_grp_prjt_2/blob/main/images/download.png)
+“If we can identify another Earth-like planet, it comes full circle, from thinking that everything revolves around our planet to 
+knowing that there are lots of other Earths out there.” Sara Seager, professor of planetary science and physics at MIT 
+
+![alt test](https://github.com/jeffhoffmanmba/inhabitable_exoplanets_grp_prjt_2/blob/main/images/planetTypes_d3bchart.jpg)
