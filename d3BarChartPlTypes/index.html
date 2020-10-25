@@ -94,7 +94,7 @@ d3.csv(url, function(error, data){
             y: 20,
         })
     label.append('text')
-        .text('Planet Types - BarChart w Tooltip')
+        .text('PlanetTypes - d3 BarChart w Tooltip')
         .attr('transform', 'translate(' + [Width / 2, - margin.top / 2] + ')')
         .attr({
             'text-anchor': 'middle',
@@ -148,7 +148,7 @@ d3.csv(url, function(error, data){
     function mousemove(){
         var d = d3.select(this).data()[0]
         div
-            .html(d.type + '<hr/>' + d.number)
+            .html(d.type + '<hr/>' + d.percent)
             .style('left', (d3.event.pageX - 34) + 'px')
             .style('top', (d3.event.pageY - 12) + 'px');
     }
