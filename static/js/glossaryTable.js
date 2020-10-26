@@ -22,7 +22,7 @@ d3.json("/api").then(function(my_data) {
         var cell = row.append("td");
         if (key === "more_info") {
           var text = value;
-          cell.html('<a href="' + value + ' rel="noopener noreferrer" target="_blank">' + text + '</a>');
+          cell.html(`<a href="${value}" rel="noopener noreferrer" target="_blank">${text}</a>`);
         }
         else {
           cell.text(value);

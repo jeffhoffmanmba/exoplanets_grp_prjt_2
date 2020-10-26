@@ -13,6 +13,7 @@ def get_planet_data():
     Exo = Base.classes.exoplanets
     Further = Base.classes.furtherinterest
     Glossary = Base.classes.glossary
+    Obs = Base.classes.observatory
 
     session = Session(engine)
 
@@ -21,23 +22,26 @@ def get_planet_data():
     e_query = session.query(Exo.exoPlanetName, Exo.PlanetMassEst, Exo.PlanetRadiusEst, Exo.PlanetTempType, Exo.PlanetDetection, Exo.DiscoverYr, Exo.StarConst, Exo.PotHabitableOptimistic, Exo.PotHabitableConservative, Exo.LastUpdate, Exo.StarRtAsc, Exo.StarDistance)
     g_query = session.query(Glossary.name, Glossary.value, Glossary.description, Glossary.more_info)
     f_query = session.query(Further.cat, Further.name, Further.duration, Further.description, Further.link)
+    o_query = session.query(Obs.facility, Obs.discoveries, Obs.latitude, Obs.longitude)
 
-    queries = [s_query, b_query, e_query, g_query, f_query]
+    queries = [s_query, b_query, e_query, g_query, f_query, o_query]
 
     s_keys = ["year", "RadialVelocity", "Transit", "Imaging", "Microlensing"]
     b_keys = ["type", "number", "percent"]
     e_keys = ["exoPlanetName", "PlanetMassEst", "PlanetRadiusEst", "PlanetTempType", "PlanetDetection", "DiscoverYr", "StarConst", "PotHabitableOptimistic", "PotHabitableConservative", "LastUpdate", "StarRtAsc", "StarDistance"]
     g_keys = ["name", "value", "description", "more_info"]
     f_keys = ["Cat", "Name", "Duration", "Description", "Link"]
+    o_keys = ["Facility", "Discoveries", "Latitude", "Longitude"]
 
-    keys = [s_keys, b_keys, e_keys, g_keys, f_keys]
+    keys = [s_keys, b_keys, e_keys, g_keys, f_keys, o_keys]
 
     data = {
         "stackedChart": [],
         "barChart": [],
         "exoplanets": [],
         "glossary": [],
-        "furtherInterest": []
+        "furtherInterest": [],
+        "observatory": []
     }
 
     for (query, i) in zip(queries, range(len(queries))):

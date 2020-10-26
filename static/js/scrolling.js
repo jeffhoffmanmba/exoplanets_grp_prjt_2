@@ -24,7 +24,7 @@ $(document).ready(function() {
                 
                 if(currentLoc <= fdIn){
                     $('.main_str_container').css("opacity", $(window).scrollTop() / (fdIn*2));
-                    $('.main_str').css("font-size", `${($(window).scrollTop() / 100)}vw`);
+                    $('.main_str').css("font-size", `${($(window).scrollTop() / 130)}vw`);
                 }else if(currentLoc <= (fdIn+show)){
                     $('.main_str_container').css("opacity", 0.5);
                 }else{
@@ -33,23 +33,48 @@ $(document).ready(function() {
                 }
                 break;
             
-            default:
+            case 1:
                 $('.main_str_container').css("display", "none");
                 $('.main_img').css("display", "none");
 
                 for(i = 1;i <= nContainers;i++)
-                    if(i === nPage)
+                    if(i === nPage || i === nPage+1)
                         $(`.container_${i}`).css("display", "flex");
                     else
                         $(`.container_${i}`).css("display", "none");
 
                 if(currentLoc <= fdIn){
+                    $(`.container_${nPage+1}`).css("opacity", (currentLoc / fdIn)/2);
                     $(`.container_${nPage}`).css("opacity", currentLoc / fdIn);
                     $(strCss[nPage-1]).css("font-size", `${(currentLoc / 50)}vw`);
-                }else if(currentLoc <= (fdIn+show))
+                }else if(currentLoc <= (fdIn+show)){
+                    $(`.container_${nPage+1}`).css("opacity", 0.5);
                     $(`.container_${nPage}`).css("opacity", 1);
-                else
+                }else{
+                    $(`.container_${nPage+1}`).css("opacity", 0.5 - ((currentLoc-fdIn-show)/fdOut)/2);
                     $(`.container_${nPage}`).css("opacity", 1 - ((currentLoc-fdIn-show)/fdOut));
+                }
+
+                break;
+                
+
+            default:
+                $('.main_str_container').css("display", "none");
+                $('.main_img').css("display", "none");
+
+                for(i = 1;i <= nContainers;i++)
+                    if(i === nPage+1)
+                        $(`.container_${i}`).css("display", "flex");
+                    else
+                        $(`.container_${i}`).css("display", "none");
+
+                if(currentLoc <= fdIn){
+                    $(`.container_${nPage+1}`).css("opacity", currentLoc / fdIn);
+                    $(strCss[nPage]).css("font-size", `${(currentLoc / 50)}vw`);
+                }else if(currentLoc <= (fdIn+show))
+                    $(`.container_${nPage+1}`).css("opacity", 1);
+                else
+                    $(`.container_${nPage+1}`).css("opacity", 1 - ((currentLoc-fdIn-show)/fdOut));
         }    
     });
 });

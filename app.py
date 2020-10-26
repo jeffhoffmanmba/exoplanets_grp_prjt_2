@@ -22,6 +22,10 @@ def glossary():
 def further():
     return render_template("further.html")
 
+@app.route("/observatory")
+def observatory():
+    return render_template("observatory.html")
+
 @app.route("/api")
 def api():
     return jsonify(data)
