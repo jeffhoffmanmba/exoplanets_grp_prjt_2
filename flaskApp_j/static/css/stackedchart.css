@@ -1,0 +1,103 @@
+html {
+    scroll-behavior: smooth;
+    height: calc(min(3400px));
+}
+
+svg {
+    font: 10px sans-serif;
+    shape-rendering: crispEdges;
+}
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: #000;
+}
+ 
+path.domain {
+    stroke: black;
+}
+ 
+.y .tick line {
+    stroke: #ddd;
+}
+
+.xGroup line, .xGroup path{
+    visibility: hidden;
+}
+
+.tooltip{
+    position      : absolute;
+    text-align    : center;
+    max-width     : 70px;
+    max-height    : 30px;
+    padding       : 8px;
+    border        : none;
+    border-radius : 8px;
+    margin-top    : -30px;
+    font          : 10px sans-serif;
+    background    : black;
+    color         : white;
+    pointer-events: none;
+}
+
+.tooltip_1 {
+    position: absolute;
+    width: 135px;
+    height: 60px;
+    padding: 2px;
+    padding-top: 8px;
+    font: 12px sans-serif;
+    color: white;
+    text-align: center;
+    background: #551aaf;
+    border: 0;
+    border-radius: 10px;
+  }
+
+  .axis-text {
+    font-family: sans-serif;
+    font-weight: bold;
+    fill: #551aaf;
+    text-anchor: middle;
+  }
+  
+  .active {
+    font-weight: bold;
+    fill: #000;
+    fill: #551aaf;
+    transition: fill 0.3s ease-out;
+    text-anchor: middle;
+  }
+  
+  .inactive {
+    font-weight: lighter;
+    fill: #551aaf;
+    transition: fill 0.3s ease-out;
+    text-anchor: middle;
+  }
+  
+  .inactive:hover {
+    fill: #e75480;
+    cursor: pointer;
+  }
+
+  #hairmetal {
+    border-radius: 8px;
+  }
+  
+  .chart::before {
+    position: absolute;
+    top: 50px;
+    left: 300px;
+    z-index: -1;
+    display: block;
+    width: 400px;
+    height: 300px;
+    content: " ";
+    background-image: url("nasa_habitable_zone.jpg");
+    background-repeat: no-repeat;
+    background-position: 50% 0;
+    background-size: cover;
+    opacity: 0.3;
+  }

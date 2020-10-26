@@ -1,0 +1,260 @@
+/*
+* {
+  box-sizing: border-box;
+  font-family: Ubuntu, sans-serif;
+}*/
+
+/* html, */
+body {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  margin-top: 50px;
+  background-color: black;
+  background-image: url("/static/img/image14.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+/*
+body::before {
+  position: absolute;
+  top: 0px;
+  left: 105px;
+  z-index: -1;
+  display: block;
+  width: 1142px;
+  height: 1400px;
+  content: " ";*/
+  /* background-image: url("../images/image8.png"); */
+  /* background-image: url("../images/image14.jpg"); */
+  /* background-image: url("../images/gif3.webp"); */
+  /*background-repeat: no-repeat;
+  background-position: 50% 0;
+  background-size: cover;
+  opacity: 0.4;
+}*/
+
+h2 {
+  text-align: center;
+  font-size: 22px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 55px;
+    color: white;
+}
+
+/* th {
+    font-size: 15px;
+}
+
+td {
+    font-size: 18px;
+} */
+/* The wrapper contains all of the page's content besides the footer, which is pushed to the bottom of the page */
+.wrapper {
+  position: relative;
+  min-height: 100%;
+  padding-bottom: 40px;
+  overflow: auto;
+}
+
+/* #table-area th:nth-child(2), */
+
+.margin-top-50 {
+  margin-top: 50px;
+
+}
+
+/* thead {
+  margin-top: 50px;
+
+} */
+
+/* table {
+  margin-top: -80px;
+} */
+
+
+table {
+  margin-top: 20px;
+  background-color: rgba(255, 255, 255, .25);
+}
+
+th, td {
+  color: white;
+  font-family: Ubuntu, sans-serif;
+}
+
+p {
+  font-size: 22px;
+}
+
+/* code to freeze headers  */
+
+/* #glossary-table {
+   position: fixed; 
+   width: 100%; 
+   height: 100px; 
+   top: 0; 
+   text-align:center; 
+   margin-top:0px; 
+   margin-bottom:40px;
+   background-color: black;
+  } */
+  /* td {width:25% } */
+
+  /* #further-interest-table {
+     position: fixed; 
+     width: 100%; 
+     height: 100px; 
+     top: 0; 
+     text-align:center; 
+     margin-top:0px; 
+     margin-bottom:40px;
+    } */
+    /* td {width:25% } */
+
+/***********************************************************************/
+/* media queries which will only be activated at specific screen sizes */
+/***********************************************************************/
+
+@media (max-width: 800px) {
+  #table-area td {
+    font-size: 1em;
+  }
+}
+
+@media (max-width: 500px) {
+  #table-area thead {
+    display: none;
+  }
+
+  #table-area tr td:first-child {
+    font-size: 1.8em;
+    font-weight: bold;
+    background: #1b3146;
+  }
+
+  #table-area tr td:last-child {
+    margin-bottom: 20px;
+  }
+
+  #table-area tr td:last-child::after {
+    display: block;
+    width: 100%;
+    height: 1px;
+    margin-top: 20px;
+    content: " ";
+    background: aliceblue;
+  }
+
+  #table-area td {
+    font-size: 1.25em;
+  }
+
+  #table-area tbody td {
+    display: block;
+    text-align: center;
+  }
+
+  #table-area tbody td::before {
+    display: block;
+    font-size: 1.4em;
+    font-weight: bold;
+    text-align: center;
+    content: attr(data-th);
+  }
+}
+/*
+header:before, header:after, nav:before, nav:after, .navi_container:before, .navi_container:after,
+.navi:before, .navi:after, .link:before, .link:after, .nav_menu:before, .nav_menu:after {
+  box-sizing:content-box;
+}*/
+
+* {
+  -webkit-box-sizing: content-box;
+     -moz-box-sizing: content-box;
+          box-sizing: content-box;
+}
+*:before,
+*:after {
+  -webkit-box-sizing: content-box;
+     -moz-box-sizing: content-box;
+          box-sizing: content-box;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  min-width: 1024px;
+  height: 48px;
+  max-height: 44px;
+  z-index: 9999;
+  display: block;
+  margin: 0;
+  font-size: 17px;
+  color: #f5f5f7;
+  background: rgba(0, 0, 0, 0.92);
+  line-height: 0;
+  box-sizing: content-box;
+}
+
+nav {
+  display: block;
+  box-sizing: content-box;
+  margin: 0;
+}
+
+.navi_container {
+  margin: 0 auto;
+  max-width: 980px;
+  padding: 0 22px;
+  position: relative;
+  z-index: 2;
+  padding-left: calc(max(22px, env(safe-area-inset-left)));
+  padding-right: calc(max(22px, env(safe-area-inset-right)));
+  box-sizing: content-box;
+}
+
+.navi {
+  margin: 0px -10px;
+  padding: 0px;
+  width: auto;
+  height: 44px;
+  display: flex;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  user-select: none;
+  list-style: none;
+  box-sizing: content-box;
+}
+
+.link {
+  box-sizing: content-box;
+  vertical-align: text-bottom;
+}
+
+.link:link, .link:visited {
+  color: #f5f5f7;
+  opacity: 0.75;
+  transition: opacity 0.5s;
+  text-decoration: none;
+}
+
+.link:hover {
+  opacity: 1;
+  transition: opacity 0.5s;
+}
+
+.nav_menu {
+  display: inline;
+  padding-top: 10px;
+  box-sizing: content-box;
+  vertical-align: baseline;
+}
