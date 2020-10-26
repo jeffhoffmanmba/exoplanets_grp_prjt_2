@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}
+    Group 5 - Glossary
+{% endblock %}
+{% block style %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/superhero/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+    <link rel="stylesheet" href="static/css/styleGlossary.css">
+{% endblock %}
+{% block body %}
+<div class="wrapper">
+    <div class="container">
+        <div class="col-md-12">
+            <h1> GLOSSARY </h1>
+            <div id="table-area" class="">
+                <table id="glossary-table" class="table  table-dark table-hover">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th class="table-head">NAME</th>
+                            <th class="table-head">VALUE</th>
+                            <th class="table-head">DESCRIPTION</th>
+                            <th class="table-head">MORE INFORMATION</th>
+                        </tr>                
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block script %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.11.0/d3.js"></script>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="static/js/glossaryTable.js"></script>
+{% endblock %}

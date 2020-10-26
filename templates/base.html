@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            {% block title %}
+            Group 5 - Habitable Exoplanets
+            {% endblock %}
+        </title>
+        {% block style %}
+        <link rel="stylesheet" href="static/css/style.css">
+        <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet"> 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <script src="static/js/scrolling.js"></script>
+        {% endblock %}
+    </head>
+    <body>
+        {% block header %}
+        <header>
+            <nav>
+                <div class="navi_container">
+                    <ul class="navi">
+                        <li class="nav_menu"><a class="link" href="/"><img src="static/img/mono-kstars-planets.svg" width="24px" height="24px" /></a></li>
+                        <li class="nav_menu"><a class="link" href="/charts">Charts</a></li>
+                        <li class="nav_menu"><a class="link" href="/glossary">Glossary</a></li>
+                        <li class="nav_menu"><a class="link" href="/further">Further Interest</a></li>
+                        <li class="nav_menu"><a class="link" href="#">About US</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        {% endblock %}
+        {% block body %}
+        {% endblock %}
+        {% block script %}
+        {% endblock %}
+    </body>
+</html>
