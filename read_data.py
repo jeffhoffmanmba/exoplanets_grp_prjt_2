@@ -1,6 +1,7 @@
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy import create_engine
 from sqlalchemy.orm import Session
+# DB URI
 from db_engine import eng
 
 def get_planet_data():
@@ -44,6 +45,7 @@ def get_planet_data():
         "observatory": []
     }
 
+    # Run queries to load data from the database server
     for (query, i) in zip(queries, range(len(queries))):
         for row in query:
             temp_dict = {}

@@ -1,27 +1,34 @@
 $(document).ready(function() {
+    // Initializing page. Scroll to the top and hide other containers except for the first page
     $(document).scrollTop(0);
     $('.container_1').css("display", "none");
     $('.container_2').css("display", "none");
     $('.container_3').css("display", "none");
 
-    var fdIn = 400;
-    var show = 200;
-    var fdOut = 400;
-    var nContainers = 3;
+    // Set the amount of fade in, show, fade out.
+    const fdIn = 400;
+    const show = 200;
+    const fdOut = 400;
+    const nContainers = 3;
     var strCss = [".habit_str", "", ".look_str"];
-            
+
+    // If the browser gets scrolled
     $(window).scroll(function() {
+        // Get the number of page and current location
         var nPage = parseInt($(window).scrollTop() / (fdIn + show + fdOut));
         var currentLoc = $(window).scrollTop() % (fdIn + show + fdOut);
         
         switch (nPage){
             case 0:
+                // In the first page, show the main image and text
                 $('.main_img').css("display", "flex");
                 $('.main_str_container').css("display", "flex");
 
+                // Hide other pages
                 for(i = 1;i <= nContainers;i++)
                     $(`.container_${i}`).css("display", "none");
                 
+                // Fade in, show, and fade out depending on the current location
                 if(currentLoc <= fdIn){
                     $('.main_str_container').css("opacity", $(window).scrollTop() / (fdIn*2));
                     $('.main_str').css("font-size", `${($(window).scrollTop() / 130)}vw`);
@@ -34,6 +41,7 @@ $(document).ready(function() {
                 break;
             
             case 1:
+                // In the second page, hide the first page
                 $('.main_str_container').css("display", "none");
                 $('.main_img').css("display", "none");
 

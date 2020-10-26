@@ -3,9 +3,9 @@ $(document).ready(function() {
     $('.chart_container_2').css("display", "none");
     $('.chart_container_3').css("display", "none");
 
-    var fdIn = 400;
-    var show = 200;
-    var fdOut = 400;
+    const fdIn = 400;
+    const show = 200;
+    const fdOut = 400;
     var nContainers = 3;
             
     $(window).scroll(function() {

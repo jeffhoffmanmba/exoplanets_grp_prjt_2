@@ -4,6 +4,8 @@ from read_data import get_planet_data
 app = Flask(__name__)
 app.config['JSON_SORT_KEYS'] = False
 
+# Read data from database using SQL alchemy, and store to a variable
+# This function is located in read_data.py
 data = get_planet_data()
 
 @app.route("/")
@@ -26,6 +28,7 @@ def further():
 def observatory():
     return render_template("observatory.html")
 
+# API that provides data to JS files
 @app.route("/api")
 def api():
     return jsonify(data)

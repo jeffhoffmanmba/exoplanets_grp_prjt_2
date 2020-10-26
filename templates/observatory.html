@@ -1,7 +1,10 @@
+<!-- Load base.html -->
 {% extends "base.html" %}
+<!-- Redefine title -->
 {% block title %}
 Group 5 - Observatory map
 {% endblock %}
+<!-- Redefine style -->
 {% block style %}
 <link rel="stylesheet" href="static/css/style.css">
 <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet"> 
@@ -17,9 +20,11 @@ Group 5 - Observatory map
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/papaparse@5.3.0/papaparse.min.js"></script>
 {% endblock %}
+<!-- Redefine body -->
 {% block body %}
 <div id="map"></div>
 {% endblock %}
+<!-- Redefine script -->
 {% block script %}
 <script src="https://d3js.org/d3.v5.min.js"></script>
 <script src="/static/js/observatory.js"></script>
