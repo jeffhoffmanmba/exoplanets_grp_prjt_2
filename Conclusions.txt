@@ -1,0 +1,6 @@
+1. As shown by the Leaflet, Observatories are located across the world.  It is a global effort.
+2. As shown in the d3, of the 200 optimistic habitable planets, most have planet mass estimate below 1000 
+and planet star distance (parsecs) below 1000
+3. As shown in the d3, of the 200 optimistic habitable planets, overall there is less of a correlation between
+Planet Radius Estimate and Planet Star Distance (parsecs)
+4.  There are 2 main types of Planet Types discovered - Jovian (1302 or 32.3%) and SuperTerran (1099 or 27.27%)
