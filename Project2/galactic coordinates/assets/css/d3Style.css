@@ -1,0 +1,131 @@
+/* axis label selections display */
+.active {
+  font-weight: bold;
+  fill: rgb(14, 6, 128);
+  transition: fill 0.3s ease-out;
+  text-anchor: middle;
+}
+.inactive {
+  font-weight: lighter;
+  fill: rgb(155, 158, 189);
+  transition: fill 0.3s ease-out;
+  text-anchor: middle;
+}
+.inactive:hover {
+  fill: rgb(248, 14, 72);
+  cursor: pointer;
+}
+
+/* state abbreviation in circle */
+.stateText {
+  font-family: sans-serif;
+  fill: #fff;
+  font-size: xx-small;
+  text-anchor: middle;
+}
+
+/* couldn't get border to appear, so changed color instead */
+circle:hover {
+  fill: yellow;
+  }
+
+/* scatterplot background image */
+#scatter::before {
+  position: absolute;
+  top: 0px;
+  left: 105px;
+  z-index: -1;
+  display: block;
+  width: 1070px;
+  height: 520px;
+  content: " ";
+  background-image: url("../images/milk1.jpg");
+  background-repeat: no-repeat;
+  background-position: 50% 0;
+  background-size: cover;
+  opacity: 0.6;
+}
+
+/* tooltip popup box */
+.tooltip {
+  position: absolute;
+  width: 135px;
+  height: 50px;
+  padding: 2px;
+  padding-top: 8px;
+  font: 10px sans-serif;
+  color: white;
+  text-align: center;
+  background: #551aaf;
+  border: 0;
+  border-radius: 10px;
+}
+/* footer */
+#footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%; /* Set the fixed height of the footer here */
+  height: 10px;
+  padding-top: 20px;
+  padding-bottom: 40px;
+  text-align: center;
+  background-color: #f5f5f5;
+}
+#footer p {
+  margin: 0;
+  font-size: 16px;
+}
+
+/* Sticky Footer rules (https://getbootstrap.com/examples/sticky-footer/) */
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Padding bottom by footer height */
+  padding-bottom: 80px;
+}
+
+/* Mobile Rules */
+@media screen and (max-width: 530px) {
+  .stateText {
+    display: none;
+  }
+  .aText {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .aText {
+    font-size: 13px;
+  }
+}
+
+/* .axis-text {
+  font-family: sans-serif;
+  font-weight: bold;
+  fill: #551aaf;
+  text-anchor: middle;
+} */
+
+/* .aText {
+  font-family: sans-serif;
+  font-size: 16px;
+  text-anchor: middle;
+} */
+
+/* .iframeContainer {
+  padding: 20px;
+  border: 1px solid #e3e3e3;
+} */
+
+/* .stateCircle {
+  fill: #89bdd3;
+  stroke: #e3e3e3;
+} */
+/* 
+.chart {
+  display: block;
+  margin: 0;
+} */
